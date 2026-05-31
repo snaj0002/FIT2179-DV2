@@ -1,0 +1,163 @@
+{
+  "title": {
+    "text": "Wind profile by city",
+    "subtitle": "Darker bars show the wind directions recorded most often for the selected city."
+  },
+  "width": "container",
+  "height": 390,
+  "data": {
+    "url": "data/wind_long.csv"
+  },
+  "params": [
+    {
+      "name": "CitySelect",
+      "value": "Melbourne",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Adelaide",
+          "Albany",
+          "Albury",
+          "AliceSprings",
+          "BadgerysCreek",
+          "Ballarat",
+          "Bendigo",
+          "Brisbane",
+          "Cairns",
+          "Canberra",
+          "Cobar",
+          "CoffsHarbour",
+          "Dartmoor",
+          "Darwin",
+          "GoldCoast",
+          "Hobart",
+          "Katherine",
+          "Launceston",
+          "Melbourne",
+          "MelbourneAirport",
+          "Mildura",
+          "Moree",
+          "MountGambier",
+          "MountGinini",
+          "Newcastle",
+          "Nhil",
+          "NorahHead",
+          "NorfolkIsland",
+          "Nuriootpa",
+          "PearceRAAF",
+          "Penrith",
+          "Perth",
+          "PerthAirport",
+          "Portland",
+          "Richmond",
+          "Sale",
+          "SalmonGums",
+          "Sydney",
+          "SydneyAirport",
+          "Townsville",
+          "Tuggeranong",
+          "Uluru",
+          "WaggaWagga",
+          "Walpole",
+          "Watsonia",
+          "Williamtown",
+          "Witchcliffe",
+          "Wollongong",
+          "Woomera"
+        ],
+        "name": "City: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.Location == CitySelect"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4
+  },
+  "encoding": {
+    "x": {
+      "field": "direction",
+      "type": "ordinal",
+      "sort": [
+        "N",
+        "NNE",
+        "NE",
+        "ENE",
+        "E",
+        "ESE",
+        "SE",
+        "SSE",
+        "S",
+        "SSW",
+        "SW",
+        "WSW",
+        "W",
+        "WNW",
+        "NW",
+        "NNW"
+      ],
+      "title": "Wind direction"
+    },
+    "y": {
+      "field": "count",
+      "type": "quantitative",
+      "title": "Observation count"
+    },
+    "color": {
+      "field": "count",
+      "type": "quantitative",
+      "title": "Observation count",
+      "scale": {
+        "scheme": "tealblues"
+      },
+      "legend": {
+        "orient": "bottom",
+        "gradientLength": 280
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Location",
+        "title": "City"
+      },
+      {
+        "field": "direction",
+        "title": "Wind direction"
+      },
+      {
+        "field": "count",
+        "title": "Observations",
+        "type": "quantitative",
+        "format": ","
+      }
+    ]
+  },
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Inter",
+      "titleFont": "Inter",
+      "labelColor": "#334155",
+      "titleColor": "#0f172a",
+      "gridColor": "#e5e7eb"
+    },
+    "legend": {
+      "labelFont": "Inter",
+      "titleFont": "Inter",
+      "orient": "bottom",
+      "direction": "horizontal",
+      "columns": 4
+    }
+  },
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  }
+}

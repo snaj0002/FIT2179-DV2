@@ -1,0 +1,59 @@
+{
+  "title": {
+    "text": "Internal and overseas migration pull regions in different directions",
+    "subtitle": "Top and bottom LGAs by total net migration, 2025"
+  },
+  "width": "container",
+  "height": 620,
+  "data": {
+    "url": "data/regional_migration_extremes.csv"
+  },
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 3
+  },
+  "encoding": {
+    "y": {
+      "field": "Label",
+      "type": "nominal",
+      "sort": "x",
+      "title": null,
+      "axis": {
+        "labelLimit": 175
+      }
+    },
+    "x": {
+      "field": "Migration total",
+      "type": "quantitative",
+      "title": "Net migration"
+    },
+    "color": {
+      "condition": {
+        "test": "datum[\"Migration total\"] >= 0",
+        "value": "#10b981"
+      },
+      "value": "#ef4444"
+    },
+    "tooltip": [
+      {
+        "field": "Label"
+      },
+      {
+        "field": "State"
+      },
+      {
+        "field": "Net internal migration (no.)",
+        "format": ","
+      },
+      {
+        "field": "Net overseas migration (no.)",
+        "format": ","
+      },
+      {
+        "field": "Migration total",
+        "format": ","
+      }
+    ]
+  },
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json"
+}

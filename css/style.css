@@ -1,0 +1,110 @@
+
+:root{
+  --bg:#f8fafc; --card:#ffffff; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0;
+  --blue:#2563eb; --teal:#14b8a6; --orange:#f97316; --shadow:0 16px 35px rgba(15,23,42,.08);
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.62}
+.hero{min-height:90vh;display:grid;place-items:center;padding:80px 24px;background:radial-gradient(circle at 20% 20%,rgba(20,184,166,.22),transparent 35%),linear-gradient(135deg,#06111f 0%,#0f172a 55%,#164e63 100%);color:white;text-align:center;position:relative;overflow:hidden}.hero:after{content:'';position:absolute;inset:auto -10% -20% -10%;height:300px;background:rgba(255,255,255,.06);filter:blur(70px)}.hero-inner{max-width:980px;position:relative;z-index:1}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.82rem;color:#67e8f9;font-weight:700}.hero h1{font-size:clamp(3rem,8vw,7.4rem);line-height:.95;margin:18px 0 20px;letter-spacing:-.07em}.subtitle{font-size:clamp(1.1rem,2vw,1.55rem);color:#dbeafe;max-width:800px;margin:0 auto 28px}.hero-note{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}.pill{padding:8px 14px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(255,255,255,.08);backdrop-filter:blur(8px);font-size:.9rem}.progress{position:sticky;top:0;z-index:10;background:rgba(248,250,252,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:10px 24px;font-size:.88rem;color:var(--muted)}.progress strong{color:var(--ink)}
+.container{max-width:1180px;margin:0 auto;padding:56px 24px}.intro{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start}.intro h2,.section-title h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;margin:0 0 16px;letter-spacing:-.04em}.lead{font-size:1.16rem;color:#334155}.info-card,.chart-card,.narrative-card{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}.info-card{padding:26px}.info-card h3{margin-top:0}.info-card ul{padding-left:22px;color:#334155}.story-step{opacity:.55;transform:translateY(10px);transition:.3s ease}.story-step.active{opacity:1;transform:none}.section-title{margin-bottom:26px}.kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;font-weight:800;color:var(--teal);margin:0 0 8px}.story-grid{display:grid;grid-template-columns:340px minmax(0,1fr);gap:28px;align-items:start;margin:36px 0 72px}.story-copy{position:sticky;top:68px}.narrative-card{padding:24px}.narrative-card h3{margin:0 0 10px;font-size:1.35rem}.narrative-card p{color:#475569;margin:.6rem 0}.chart-card{padding:22px;margin-bottom:26px;overflow:visible}.chart-card h4{font-size:1.05rem;margin:0 0 4px}.chart-card .caption{font-size:.92rem;color:var(--muted);margin:0 0 12px}.vis{width:100%;min-height:240px;overflow-x:auto;overflow-y:visible}.vis svg{max-width:100%;height:auto}.vis canvas{max-width:100%}.chart-error{padding:18px;color:#b91c1c;background:#fee2e2;border-radius:12px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:26px}.wide{grid-column:1/-1}.sources{background:#0f172a;color:#cbd5e1;padding:42px 24px}.sources a{color:#67e8f9}.sources-inner{max-width:1180px;margin:0 auto}.sources h2{color:white}.small{font-size:.9rem;color:#94a3b8}.vega-bindings{font-size:.9rem;color:#334155;margin-bottom:8px}.vega-bind select,.vega-bind input{margin-left:6px;border:1px solid var(--line);border-radius:8px;padding:4px 8px;background:white}.vega-embed summary{display:none}
+@media (max-width: 920px){.intro,.story-grid,.two-col{grid-template-columns:1fr}.story-copy{position:static}.hero{min-height:72vh}.container{padding:42px 16px}.chart-card,.info-card,.narrative-card{border-radius:18px}.vis{overflow-x:auto}}
+
+.section-lead { max-width: 850px; color: #536173; font-size: 1.05rem; line-height: 1.65; margin-top: -0.5rem; }
+
+
+/* Final polish */
+.hero{
+  min-height:100vh;
+  padding:58px 24px 70px;
+  background:
+    radial-gradient(circle at 25% 15%, rgba(45,212,191,.32), transparent 30%),
+    radial-gradient(circle at 75% 10%, rgba(59,130,246,.24), transparent 34%),
+    linear-gradient(135deg,#031827 0%,#092f45 48%,#0f172a 100%);
+}
+.hero h1{margin-bottom:34px;text-shadow:0 18px 45px rgba(0,0,0,.26)}
+.hero-inner{max-width:1120px;width:100%}
+.hero-map-wrap{max-width:880px;margin:0 auto;border:1px solid rgba(148,231,255,.25);border-radius:30px;padding:18px;background:rgba(2,6,23,.34);box-shadow:0 30px 90px rgba(0,0,0,.32);backdrop-filter:blur(10px)}
+.hero-map{min-height:360px;width:100%}
+.hero-map .vega-embed{width:100%}
+.hero-note,.subtitle{display:none}
+.progress{display:none}
+.chart-card{overflow:visible;padding:24px 26px 28px}
+.vis{overflow-x:visible;overflow-y:visible;min-height:260px;padding-bottom:6px}
+.vega-embed{width:100%}
+.vega-embed svg{overflow:visible}
+.vega-bindings{margin:4px 0 12px;padding:8px 10px;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:12px;display:inline-block}
+.sources p{max-width:980px;overflow-wrap:anywhere}
+.sources h2{margin-top:0}
+
+
+/* v6 hero simplification: no map on the opening screen */
+.hero{min-height:72vh;padding:70px 24px;background:radial-gradient(circle at 18% 18%, rgba(96,165,250,.26), transparent 28%),radial-gradient(circle at 82% 18%, rgba(20,184,166,.24), transparent 30%),linear-gradient(135deg,#071827 0%,#0f3551 52%,#111827 100%)}
+.hero h1{margin-bottom:18px}
+.hero .subtitle{display:block;color:#dbeafe;font-size:clamp(1.05rem,2vw,1.45rem);max-width:780px;margin:0 auto;line-height:1.55}
+.hero-map-wrap,.hero-map{display:none!important}
+
+
+/* v10 polish: prevent Vega legends from being clipped and improve scatter/map spacing */
+.vega-embed, .vega-embed details, .vega-embed canvas, .vega-embed svg { max-width: 100%; }
+.vis { overflow: visible; }
+.chart-card { overflow: visible; }
+.chart-card .caption { max-width: 760px; }
+
+.chart-card h4,.chart-card .caption,.narrative-card h3,.narrative-card p{overflow-wrap:anywhere;word-break:normal}
+.chart-card{overflow:hidden}
+
+.single-column{display:block!important}.full-width{width:100%!important;max-width:100%!important}
+
+/* v15 layout refinements */
+.section-description{
+  max-width: 920px;
+  margin: 14px 0 0;
+  color: #4b5563;
+  line-height: 1.7;
+  font-size: 1.03rem;
+}
+.climate-map-section .section-title{
+  text-align:left;
+  max-width: 1050px;
+}
+.map-feature{
+  max-width: 1120px;
+  margin: 26px auto 0;
+}
+.map-feature .vis{
+  min-height: 520px;
+}
+.climate-stack{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+.climate-stack .chart-card{
+  width:100%;
+  max-width:100%;
+}
+.climate-stack .vis{
+  width:100%;
+}
+@media (max-width: 900px){
+  .map-feature .vis{min-height:420px;}
+}
+
+
+/* Submission details */
+.submission-meta{
+  font-size:clamp(.95rem,1.8vw,1.15rem);
+  color:#bae6fd;
+  font-weight:700;
+  letter-spacing:.02em;
+  margin:0 auto 18px;
+}
+.submission-details{
+  color:#e2e8f0;
+  margin:0 0 24px;
+}
+
+/* Final submission fix: keep the embedded density map responsive. */
+#chart-lga-choropleth svg {
+  max-width: 100%;
+  height: auto;
+}

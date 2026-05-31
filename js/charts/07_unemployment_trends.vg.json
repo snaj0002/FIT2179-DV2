@@ -1,0 +1,123 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "padding": {
+    "left": 8,
+    "right": 8,
+    "top": 10,
+    "bottom": 10
+  },
+  "title": {
+    "text": "Unemployment trends across capital-city regions",
+    "subtitle": "The ABS comparison years available here are 2011, 2016 and 2021."
+  },
+  "width": "container",
+  "height": 420,
+  "data": {
+    "url": "data/unemployment_capitals_3yr.csv"
+  },
+  "mark": {
+    "type": "line",
+    "point": {
+      "filled": true,
+      "size": 90
+    },
+    "strokeWidth": 3.2
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Census comparison year",
+      "axis": {
+        "labelAngle": 0,
+        "labelFontSize": 12
+      }
+    },
+    "y": {
+      "field": "Unemployment rate (%)",
+      "type": "quantitative",
+      "title": "Unemployment rate (%)",
+      "scale": {
+        "zero": false,
+        "padding": 12
+      },
+      "axis": {
+        "tickCount": 5
+      }
+    },
+    "color": {
+      "field": "City",
+      "type": "nominal",
+      "title": "Capital city / region",
+      "scale": {
+        "range": [
+          "#2563EB",
+          "#14B8A6",
+          "#F59E0B",
+          "#EF4444",
+          "#8B5CF6",
+          "#06B6D4",
+          "#84CC16",
+          "#64748B"
+        ]
+      },
+      "legend": {
+        "orient": "bottom",
+        "columns": 4
+      }
+    },
+    "tooltip": [
+      {
+        "field": "City",
+        "title": "City / region"
+      },
+      {
+        "field": "Label",
+        "title": "LGA used"
+      },
+      {
+        "field": "State",
+        "title": "State"
+      },
+      {
+        "field": "Year",
+        "title": "Year"
+      },
+      {
+        "field": "Unemployment rate (%)",
+        "title": "Unemployment rate",
+        "type": "quantitative",
+        "format": ".1f"
+      },
+      {
+        "field": "Median household income (weekly $)",
+        "title": "Median weekly household income",
+        "type": "quantitative",
+        "format": "$,.0f"
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Inter",
+      "titleFont": "Inter",
+      "labelColor": "#334155",
+      "titleColor": "#0f172a",
+      "gridColor": "#e5e7eb"
+    },
+    "legend": {
+      "labelFont": "Inter",
+      "titleFont": "Inter",
+      "orient": "bottom",
+      "direction": "horizontal",
+      "columns": 4
+    }
+  }
+}

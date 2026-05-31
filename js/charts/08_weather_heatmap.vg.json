@@ -1,0 +1,120 @@
+{
+  "title": {
+    "text": "Climate profiles vary sharply between cities",
+    "subtitle": "Values are normalised within each weather metric after missing-value imputation"
+  },
+  "width": "container",
+  "height": 760,
+  "data": {
+    "url": "data/weather_metrics_long.csv"
+  },
+  "mark": {
+    "type": "rect",
+    "cornerRadius": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "metric",
+      "type": "nominal",
+      "sort": [
+        "Max temp",
+        "Min temp",
+        "Rainfall",
+        "Humidity 3pm",
+        "Wind gust",
+        "Sunshine",
+        "Rain tomorrow rate"
+      ],
+      "title": null,
+      "axis": {
+        "labelAngle": -30
+      }
+    },
+    "y": {
+      "field": "Location",
+      "type": "nominal",
+      "sort": [
+        "Katherine",
+        "Darwin",
+        "Uluru",
+        "Cairns",
+        "Townsville",
+        "AliceSprings",
+        "Moree",
+        "Woomera",
+        "Brisbane",
+        "PearceRAAF",
+        "Cobar",
+        "GoldCoast",
+        "PerthAirport",
+        "Perth",
+        "Mildura",
+        "Penrith",
+        "Richmond",
+        "SalmonGums",
+        "Williamtown",
+        "Newcastle",
+        "CoffsHarbour",
+        "BadgerysCreek",
+        "SydneyAirport",
+        "Sydney",
+        "WaggaWagga",
+        "Adelaide",
+        "NorahHead",
+        "Albury",
+        "Nhil",
+        "NorfolkIsland",
+        "Nuriootpa",
+        "Witchcliffe",
+        "Bendigo",
+        "Wollongong",
+        "Canberra",
+        "Watsonia",
+        "Tuggeranong",
+        "Melbourne",
+        "Walpole",
+        "MelbourneAirport",
+        "Sale",
+        "Albany",
+        "MountGambier",
+        "Dartmoor",
+        "Launceston",
+        "Ballarat",
+        "Portland",
+        "Hobart",
+        "MountGinini"
+      ],
+      "title": null,
+      "axis": {
+        "labelLimit": 130
+      }
+    },
+    "color": {
+      "field": "normalised_value",
+      "type": "quantitative",
+      "title": "Normalised intensity",
+      "scale": {
+        "scheme": "viridis"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Location"
+      },
+      {
+        "field": "metric"
+      },
+      {
+        "field": "raw_value",
+        "format": ".2f",
+        "title": "Original value"
+      }
+    ]
+  },
+  "config": {
+    "axis": {
+      "grid": false
+    }
+  },
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json"
+}

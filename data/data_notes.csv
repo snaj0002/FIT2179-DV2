@@ -1,0 +1,3 @@
+file,source,cleaning
+regional_stats_clean.csv,ABS Data by region 2011-25 spreadsheets supplied by user,"Converted numeric columns; replaced missing values with same-year means, then overall means for visualisation stability."
+weather_clean.csv,Australian Weather Training Data supplied by user; original observations attributed to Bureau of Meteorology in dataset description,"Imputed numeric observations by location mean, then overall mean; aggregated daily observations to location-level climate profiles."

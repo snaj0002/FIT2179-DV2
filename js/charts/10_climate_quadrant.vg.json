@@ -1,0 +1,106 @@
+{
+  "title": {
+    "text": "Hot does not always mean wet",
+    "subtitle": "Rainfall vs maximum temperature, sized by rain-tomorrow rate"
+  },
+  "width": "container",
+  "height": 470,
+  "data": {
+    "url": "data/weather_clean.csv"
+  },
+  "params": [
+    {
+      "name": "ClimateProfile",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Hot dry/interior",
+          "Humid/wet",
+          "Cool temperate",
+          "Warm temperate"
+        ],
+        "labels": [
+          "All profiles",
+          "Hot dry/interior",
+          "Humid/wet",
+          "Cool temperate",
+          "Warm temperate"
+        ],
+        "name": "Climate profile: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "ClimateProfile == null || datum.climate_profile == ClimateProfile"
+    }
+  ],
+  "mark": {
+    "type": "circle",
+    "opacity": 0.75,
+    "stroke": "white"
+  },
+  "encoding": {
+    "x": {
+      "field": "avg_MaxTemp",
+      "type": "quantitative",
+      "title": "Average max temperature (\u00b0C)"
+    },
+    "y": {
+      "field": "avg_Rainfall",
+      "type": "quantitative",
+      "title": "Average rainfall (mm)"
+    },
+    "size": {
+      "field": "rain_probability",
+      "type": "quantitative",
+      "title": "Rain tomorrow rate",
+      "scale": {
+        "range": [
+          50,
+          950
+        ]
+      }
+    },
+    "color": {
+      "field": "climate_profile",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Hot dry/interior",
+          "Humid/wet",
+          "Cool temperate",
+          "Warm temperate"
+        ],
+        "range": [
+          "#ef4444",
+          "#0ea5e9",
+          "#6366f1",
+          "#10b981"
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Location"
+      },
+      {
+        "field": "climate_profile"
+      },
+      {
+        "field": "avg_MaxTemp",
+        "format": ".1f"
+      },
+      {
+        "field": "avg_Rainfall",
+        "format": ".2f"
+      },
+      {
+        "field": "rain_probability",
+        "format": ".1%"
+      }
+    ]
+  },
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json"
+}

@@ -1,0 +1,250 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "padding": {
+    "left": 8,
+    "right": 8,
+    "top": 6,
+    "bottom": 6
+  },
+  "width": "container",
+  "height": 430,
+  "data": {
+    "url": "data/regional_analysis_clean_simple.csv"
+  },
+  "params": [
+    {
+      "name": "StateSelect",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All",
+          "NSW",
+          "VIC",
+          "QLD",
+          "SA",
+          "WA",
+          "TAS",
+          "NT",
+          "ACT"
+        ],
+        "name": "State: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "StateSelect == 'All' || datum.state == StateSelect"
+    },
+    {
+      "filter": "indexof(['NSW','VIC','QLD','SA','WA','TAS','NT','ACT'], datum.state) >= 0"
+    },
+    {
+      "filter": "isValid(datum.bachelor) && isValid(datum.income) && datum.income >= 0 && datum.income <= 120000"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "bachelor",
+      "type": "quantitative",
+      "title": "Bachelor degree attainment (%)",
+      "scale": {
+        "domain": [
+          0,
+          65
+        ]
+      },
+      "axis": {
+        "tickCount": 7
+      }
+    },
+    "y": {
+      "field": "income",
+      "type": "quantitative",
+      "title": "Median total income ($)",
+      "scale": {
+        "domain": [
+          0,
+          120000
+        ],
+        "clamp": true
+      },
+      "axis": {
+        "format": "$~s",
+        "tickCount": 7
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "opacity": 0.38,
+        "size": 26,
+        "stroke": "white",
+        "strokeWidth": 0.4
+      },
+      "encoding": {
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "title": "State",
+          "scale": {
+            "domain": [
+              "NSW",
+              "VIC",
+              "QLD",
+              "SA",
+              "WA",
+              "TAS",
+              "NT",
+              "ACT"
+            ],
+            "range": [
+              "#2563EB",
+              "#14B8A6",
+              "#F59E0B",
+              "#EF4444",
+              "#8B5CF6",
+              "#06B6D4",
+              "#84CC16",
+              "#64748B"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "columns": 4,
+            "title": "State"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "region",
+            "title": "Region"
+          },
+          {
+            "field": "state",
+            "title": "State"
+          },
+          {
+            "field": "bachelor",
+            "title": "Bachelor degree (%)",
+            "type": "quantitative",
+            "format": ".1f"
+          },
+          {
+            "field": "income",
+            "title": "Median income",
+            "type": "quantitative",
+            "format": "$,.0f"
+          },
+          {
+            "field": "unemployment",
+            "title": "Unemployment (%)",
+            "type": "quantitative",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/education_income_state_trends.csv"
+      },
+      "transform": [
+        {
+          "filter": "StateSelect == 'All' || datum.state == StateSelect"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.4,
+        "opacity": 0.9,
+        "clip": true
+      },
+      "encoding": {
+        "x": {
+          "field": "bachelor",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "income_trend",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "title": "State",
+          "scale": {
+            "domain": [
+              "NSW",
+              "VIC",
+              "QLD",
+              "SA",
+              "WA",
+              "TAS",
+              "NT",
+              "ACT"
+            ],
+            "range": [
+              "#2563EB",
+              "#14B8A6",
+              "#F59E0B",
+              "#EF4444",
+              "#8B5CF6",
+              "#06B6D4",
+              "#84CC16",
+              "#64748B"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "title": "State trend"
+          },
+          {
+            "field": "bachelor",
+            "type": "quantitative",
+            "title": "Bachelor degree (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "income_trend",
+            "type": "quantitative",
+            "title": "Predicted income",
+            "format": "$,.0f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Inter",
+      "titleFont": "Inter",
+      "labelColor": "#334155",
+      "titleColor": "#0f172a",
+      "gridColor": "#e5e7eb"
+    },
+    "legend": {
+      "labelFont": "Inter",
+      "titleFont": "Inter",
+      "orient": "bottom"
+    },
+    "title": {
+      "font": "Inter",
+      "fontSize": 18,
+      "subtitleFontSize": 12,
+      "anchor": "start"
+    }
+  }
+}

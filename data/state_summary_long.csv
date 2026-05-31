@@ -1,0 +1,37 @@
+State,metric,value,metric_label,normalised
+ACT,opportunity,53.466012963270735,Opportunity score,0.5
+NSW,opportunity,53.466012963270735,Opportunity score,0.5
+NT,opportunity,53.466012963270735,Opportunity score,0.5
+Other,opportunity,53.466012963270735,Opportunity score,0.5
+QLD,opportunity,53.466012963270735,Opportunity score,0.5
+SA,opportunity,53.466012963270735,Opportunity score,0.5
+TAS,opportunity,53.466012963270735,Opportunity score,0.5
+VIC,opportunity,53.466012963270735,Opportunity score,0.5
+WA,opportunity,53.466012963270735,Opportunity score,0.5
+ACT,pressure,56.07985707163038,Urban pressure score,1.0
+NSW,pressure,45.48745286288333,Urban pressure score,0.42114032557227926
+NT,pressure,44.41542821654435,Urban pressure score,0.36255571857193153
+Other,pressure,38.16810703008143,Urban pressure score,0.021148589767781244
+QLD,pressure,45.4548970225387,Urban pressure score,0.419361195662655
+SA,pressure,44.549451436891246,Urban pressure score,0.3698798950447001
+TAS,pressure,37.78111442865902,Urban pressure score,0.0
+VIC,pressure,50.99284838790095,Urban pressure score,0.7220022827260552
+WA,pressure,42.83002416414882,Urban pressure score,0.2759156644803192
+ACT,avg_unemployment,6.1556027024052264,Unemployment level,0.5
+NSW,avg_unemployment,6.1556027024052264,Unemployment level,0.5
+NT,avg_unemployment,6.1556027024052264,Unemployment level,0.5
+Other,avg_unemployment,6.1556027024052264,Unemployment level,0.5
+QLD,avg_unemployment,6.1556027024052264,Unemployment level,0.5
+SA,avg_unemployment,6.1556027024052264,Unemployment level,0.5
+TAS,avg_unemployment,6.1556027024052264,Unemployment level,0.5
+VIC,avg_unemployment,6.1556027024052264,Unemployment level,0.5
+WA,avg_unemployment,6.1556027024052264,Unemployment level,0.5
+ACT,avg_degree,10.745169645769778,Bachelor degree share,0.0
+NSW,avg_degree,10.745169645769778,Bachelor degree share,0.0
+NT,avg_degree,10.745169645769778,Bachelor degree share,0.0
+Other,avg_degree,10.745169645769778,Bachelor degree share,0.0
+QLD,avg_degree,10.745169645769778,Bachelor degree share,0.0
+SA,avg_degree,10.745169645769778,Bachelor degree share,0.0
+TAS,avg_degree,10.74516964576978,Bachelor degree share,1.0
+VIC,avg_degree,10.745169645769778,Bachelor degree share,0.0
+WA,avg_degree,10.745169645769778,Bachelor degree share,0.0

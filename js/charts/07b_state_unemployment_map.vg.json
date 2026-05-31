@@ -1,0 +1,98 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 400,
+  "projection": {
+    "type": "mercator",
+    "center": [134, -28],
+    "scale": 700,
+    "translate": [300, 230]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/tonywr71/GeoJson-Data/master/australian-states.json",
+        "format": {"type": "json", "property": "features"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.STATE_CODE",
+          "from": {
+            "data": {
+              "values": [
+                {"code": "1", "state": "NSW",  "unemployment": 5.96, "population": 8592524, "migration": 65898},
+                {"code": "2", "state": "VIC",  "unemployment": 5.83, "population": 7073859, "migration": 86382},
+                {"code": "3", "state": "QLD",  "unemployment": 6.97, "population": 5669764, "migration": 85350},
+                {"code": "4", "state": "SA",   "unemployment": 5.98, "population": 1902665, "migration": 18929},
+                {"code": "5", "state": "WA",   "unemployment": 5.89, "population": 3046897, "migration": 51946},
+                {"code": "6", "state": "TAS",  "unemployment": 6.27, "population": 576261,  "migration": 1723},
+                {"code": "7", "state": "NT",   "unemployment": 7.97, "population": 264556,  "migration": 2239},
+                {"code": "8", "state": "ACT",  "unemployment": 5.58, "population": 484630,  "migration": 3318}
+              ]
+            },
+            "key": "code",
+            "fields": ["state", "unemployment", "population", "migration"]
+          }
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "white",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "color": {
+          "field": "unemployment",
+          "type": "quantitative",
+          "title": "Avg Unemployment (%)",
+          "scale": {
+            "scheme": "orangered",
+            "domain": [5.0, 8.5]
+          },
+          "legend": {
+            "orient": "bottom",
+            "format": ".1f",
+            "titleFontSize": 12,
+            "labelFontSize": 11,
+            "gradientLength": 200
+          }
+        },
+        "tooltip": [
+          {"field": "state",        "type": "nominal",      "title": "State"},
+          {"field": "unemployment", "type": "quantitative", "title": "Avg Unemployment (%)", "format": ".2f"},
+          {"field": "population",   "type": "quantitative", "title": "Population",           "format": ","},
+          {"field": "migration",    "type": "quantitative", "title": "Net Migration",        "format": ","}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"state": "NSW", "lon": 146.5, "lat": -32.5},
+          {"state": "VIC", "lon": 144.5, "lat": -37.2},
+          {"state": "QLD", "lon": 144.5, "lat": -22.0},
+          {"state": "SA",  "lon": 134.5, "lat": -30.5},
+          {"state": "WA",  "lon": 122.0, "lat": -26.5},
+          {"state": "TAS", "lon": 146.8, "lat": -42.0},
+          {"state": "NT",  "lon": 133.5, "lat": -19.5},
+          {"state": "ACT", "lon": 149.1, "lat": -35.5}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#1a1a2e"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text":      {"field": "state", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "background": "transparent"
+  }
+}

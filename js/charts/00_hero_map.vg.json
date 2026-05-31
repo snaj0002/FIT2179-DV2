@@ -1,0 +1,94 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 360,
+  "projection": {
+    "type": "mercator",
+    "center": [
+      134,
+      -27
+    ],
+    "scale": 820
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#12355b",
+        "stroke": "#8dd6e8",
+        "strokeWidth": 0.5
+      }
+    },
+    {
+      "data": {
+        "url": "data/weather_clean.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.78,
+        "stroke": "#e0f2fe",
+        "strokeWidth": 0.5
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "avg_Rainfall",
+          "type": "quantitative",
+          "scale": {
+            "range": [
+              35,
+              720
+            ]
+          },
+          "legend": null
+        },
+        "color": {
+          "field": "avg_MaxTemp",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "turbo"
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "Location",
+            "title": "City"
+          },
+          {
+            "field": "avg_MaxTemp",
+            "title": "Avg max temp \u00b0C",
+            "type": "quantitative",
+            "format": ".1f"
+          },
+          {
+            "field": "avg_Rainfall",
+            "title": "Avg rainfall mm",
+            "type": "quantitative",
+            "format": ".2f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "background": null
+  }
+}

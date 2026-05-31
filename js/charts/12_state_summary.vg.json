@@ -1,0 +1,112 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "padding": {
+    "left": 8,
+    "right": 8,
+    "top": 10,
+    "bottom": 10
+  },
+  "title": {
+    "text": "State profiles differ by indicator",
+    "subtitle": "Colour is normalised separately within each measure; hover for actual values."
+  },
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "data/state_summary_story.csv"
+  },
+  "mark": {
+    "type": "rect",
+    "cornerRadius": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "metric",
+      "type": "nominal",
+      "title": null,
+      "sort": [
+        "Population",
+        "Median income",
+        "Unemployment",
+        "Bachelor degree",
+        "Median density",
+        "Net migration"
+      ],
+      "axis": {
+        "labelAngle": -25,
+        "labelLimit": 130
+      }
+    },
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "title": null,
+      "sort": [
+        "NSW",
+        "VIC",
+        "QLD",
+        "SA",
+        "WA",
+        "TAS",
+        "NT",
+        "ACT"
+      ]
+    },
+    "color": {
+      "field": "normalised",
+      "type": "quantitative",
+      "title": "Relative level",
+      "scale": {
+        "scheme": "tealblues"
+      },
+      "legend": {
+        "orient": "bottom",
+        "gradientLength": 300,
+        "title": "Relative level"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "state",
+        "title": "State"
+      },
+      {
+        "field": "metric",
+        "title": "Indicator"
+      },
+      {
+        "field": "value",
+        "title": "Actual value",
+        "type": "quantitative",
+        "format": ",.1f"
+      },
+      {
+        "field": "unit",
+        "title": "Unit"
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Inter",
+      "titleFont": "Inter",
+      "labelColor": "#334155",
+      "titleColor": "#0f172a",
+      "gridColor": "#e5e7eb"
+    },
+    "legend": {
+      "labelFont": "Inter",
+      "titleFont": "Inter",
+      "orient": "bottom",
+      "direction": "horizontal",
+      "columns": 4
+    }
+  }
+}

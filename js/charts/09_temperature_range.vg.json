@@ -1,0 +1,85 @@
+{
+  "title": {
+    "text": "Some regions live with a much wider daily temperature range",
+    "subtitle": "Minimum-to-maximum average temperature by city"
+  },
+  "width": "container",
+  "height": 720,
+  "data": {
+    "url": "data/weather_clean.csv"
+  },
+  "encoding": {
+    "y": {
+      "field": "Location",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null,
+      "axis": {
+        "labelLimit": 140
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Location"
+      },
+      {
+        "field": "avg_MinTemp",
+        "format": ".1f"
+      },
+      {
+        "field": "avg_MaxTemp",
+        "format": ".1f"
+      },
+      {
+        "field": "avg_Rainfall",
+        "format": ".2f"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "stroke": "#94a3b8",
+        "strokeWidth": 1.7
+      },
+      "encoding": {
+        "x": {
+          "field": "avg_MinTemp",
+          "type": "quantitative",
+          "title": "Temperature \u00b0C"
+        },
+        "x2": {
+          "field": "avg_MaxTemp"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 70,
+        "color": "#38bdf8"
+      },
+      "encoding": {
+        "x": {
+          "field": "avg_MinTemp",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 70,
+        "color": "#f97316"
+      },
+      "encoding": {
+        "x": {
+          "field": "avg_MaxTemp",
+          "type": "quantitative"
+        }
+      }
+    }
+  ],
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json"
+}

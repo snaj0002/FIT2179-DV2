@@ -1,0 +1,171 @@
+{
+  "width": 980,
+  "height": 560,
+  "projection": {
+    "type": "mercator",
+    "center": [
+      134,
+      -26
+    ],
+    "scale": 760
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e8eef5",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.6
+      }
+    },
+    {
+      "data": {
+        "url": "data/weather_clean.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.82,
+        "stroke": "#ffffff",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "avg_Rainfall",
+          "type": "quantitative",
+          "title": "Avg rainfall (mm)",
+          "scale": {
+            "range": [
+              45,
+              650
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "title": "Avg rainfall (mm)",
+            "format": ".1f"
+          }
+        },
+        "color": {
+          "field": "avg_MaxTemp",
+          "type": "quantitative",
+          "title": "Avg max temp (\u00b0C)",
+          "scale": {
+            "domain": [
+              15,
+              20,
+              25,
+              30,
+              34
+            ],
+            "range": [
+              "#1f4e9d",
+              "#4f46e5",
+              "#8b2bbd",
+              "#f97316",
+              "#dc2626"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "gradientLength": 320,
+            "title": "Avg max temp (\u00b0C)"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Location",
+            "type": "nominal",
+            "title": "Location"
+          },
+          {
+            "field": "avg_MaxTemp",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Avg max temp \u00b0C"
+          },
+          {
+            "field": "avg_MinTemp",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Avg min temp \u00b0C"
+          },
+          {
+            "field": "avg_Rainfall",
+            "type": "quantitative",
+            "format": ".2f",
+            "title": "Avg rainfall mm"
+          },
+          {
+            "field": "avg_Humidity3pm",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Humidity 3pm (%)"
+          },
+          {
+            "field": "dominant_wind",
+            "type": "nominal",
+            "title": "Dominant wind"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "CityScope == 'All locations' || datum.city_scope == 'Main city'"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Inter",
+      "titleFont": "Inter"
+    },
+    "legend": {
+      "labelFont": "Inter",
+      "titleFont": "Inter"
+    },
+    "title": {
+      "font": "Inter",
+      "fontSize": 18,
+      "subtitleFontSize": 12,
+      "anchor": "start"
+    }
+  },
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "params": [
+    {
+      "name": "CityScope",
+      "value": "All locations",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All locations",
+          "Main city"
+        ],
+        "labels": [
+          "All observed locations",
+          "Main cities only"
+        ],
+        "name": "Locations: "
+      }
+    }
+  ]
+}

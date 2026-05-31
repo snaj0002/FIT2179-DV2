@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Australia Through Regional Differences | Sina Najafi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <script src="https://unpkg.com/scrollama"></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">FIT2179 Data Visualisation 2</div>
+      <h1>Australia Through Regional Differences</h1>
+      <p class="subtitle">How population, opportunity, movement and climate create different regional experiences across Australia.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="container intro story-step active" data-section="Introduction">
+      <div>
+        <p class="kicker">Overview</p>
+        <h2>Australia is one country, but it is not one experience.</h2>
+        <p class="lead">This project compares Australian regions through two lenses: regional socio-economic indicators from ABS data and long-term weather characteristics from Australian weather observations. The aim is not to build an expert dashboard, but to guide the reader through a clear story about where people live, where opportunity concentrates, where people move, and how climate differs across place.</p>
+      </div>
+      <aside class="info-card">
+        <h3>How to read this story</h3>
+        <ul>
+          <li>Hover over charts to compare local areas, cities and states.</li>
+          <li>Use dropdown filters to focus on one state or city.</li>
+          <li>Read each section as part of one story: population, opportunity, movement and climate.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="container story-step climate-map-section" data-section="Climate setting">
+      <div class="section-title">
+        <p class="kicker">1 · Climate setting</p>
+        <h2>Climate differences create the backdrop for regional life.</h2>
+        <p class="section-description">The map gives the environmental context before the socio-economic story begins. Each city is positioned geographically: colour represents average maximum temperature, while circle size represents rainfall. This immediately shows the contrast between the tropical north, cooler southern cities, and different coastal and inland climate patterns.</p>
+      </div>
+      <div class="chart-card map-feature"><h4>City climate markers</h4><p class="caption">All observed weather locations are shown first. Use the dropdown to focus on the eight main cities. Circle size shows rainfall and colour moves from cooler blue to hotter red based on average maximum temperature.</p><div id="chart-weather-map" class="vis"></div></div>
+    </section>
+
+    <section class="container story-step" data-section="Population pattern">
+      <div class="section-title"><p class="kicker">2 · Population pattern</p><h2>Population size and density tell different stories.</h2></div>
+      <div class="story-grid">
+        <div class="story-copy narrative-card"><h3>Big regions are not always dense regions</h3><p>Population totals reveal where Australians are concentrated, highlighting the regions that place the greatest demand on housing, transport, health services and infrastructure. These are the places that dominate the national population picture.</p><p>Density tells a different story. Some regions with modest populations become extremely important once land area is considered because people live much closer together. Comparing population and density helps distinguish large regions from intensely urbanised ones and reveals how settlement patterns vary across Australia.</p></div>
+        <div>
+          <div class="chart-card"><h4>Largest local areas by population</h4><p class="caption">The biggest local areas are shown by total residents. Colour identifies the state, using the same state palette as the density and opportunity charts.</p><div id="chart-pop" class="vis"></div></div>
+          <div class="chart-card"><h4>Most densely populated local areas</h4><p class="caption">Density shows where people live closest together. This changes the story from simple population size to urban compactness and land pressure.</p><div id="chart-density" class="vis"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container story-step" data-section="Opportunity">
+      <div class="section-title"><p class="kicker">3 · Wealth and opportunity</p><h2>Opportunity is uneven, even before housing or climate are considered.</h2></div>
+      <div class="story-grid">
+        <div class="story-copy narrative-card"><h3>Income, education and unemployment interact</h3><p>Income, education and employment are closely connected, but the relationship is not identical across Australia. Each point represents a local region, making it possible to identify both successful regions and places that do not follow broader trends.</p><p>The state-based trend lines reveal whether the relationship between opportunity indicators is stronger in some parts of Australia than others. By focusing on local regions rather than state averages, the charts expose important differences that would otherwise remain hidden.</p></div>
+        <div>
+          <div class="chart-card"><h4>Income vs unemployment</h4><p class="caption">Higher income does not automatically remove unemployment pressure. Each coloured trend line summarises the income–unemployment relationship within a state.</p><div id="chart-income" class="vis"></div></div>
+          <div class="chart-card"><h4>Education vs income</h4><p class="caption">Education and income are strongly connected in many regions, but the spread of points shows that opportunity is not evenly distributed within or between states.</p><div id="chart-education" class="vis"></div></div>
+          <div class="chart-card"><h4>State-level summary</h4><p class="caption">The heatmap gives a quick state profile: which places are larger, wealthier, denser, more educated, or under more labour-market pressure relative to the others.</p><div id="chart-summary" class="vis"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container story-step" data-section="Movement">
+      <div class="section-title"><p class="kicker">4 · Movement and change</p><h2>Migration and unemployment trends show regions changing over time.</h2></div>
+      <div class="story-grid">
+        <div class="story-copy narrative-card"><h3>Movement reveals regional momentum</h3><p>Migration provides a powerful indicator of regional attractiveness. Growing regions often attract workers, students and families, while declining regions may struggle to retain population and investment.</p><p>Viewed alongside unemployment trends, migration helps explain how regional economies evolve through time. These charts highlight where momentum is building, where it is slowing, and how Australia's major urban centres have changed between census periods.</p></div>
+        <div>
+          <div class="chart-card"><h4>Where people are moving to and from</h4><p class="caption">Positive bars show regions attracting more residents than they lose; negative bars show places with net outflow. This separates growing destinations from places that may be losing residents to other parts of Australia.</p><div id="chart-migration" class="vis"></div></div>
+          <div class="chart-card"><h4>Unemployment trends across major city regions</h4><p class="caption">The chart focuses only on 2011, 2016 and 2021 because these are the clean comparison years in the dataset. The lines show whether labour-market pressure is rising, falling or remaining stable across selected major city regions.</p><div id="chart-unemployment" class="vis"></div></div>
+          <div class="chart-card"><h4>Average unemployment by state</h4><p class="caption">This choropleth map compares average unemployment across Australian states and territories. Darker areas indicate higher unemployment, making labour-market pressure easier to compare geographically.</p><div id="chart-state-unemployment-map" class="vis"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container story-step" data-section="Climate detail">
+      <div class="section-title"><p class="kicker">5 · Climate detail</p><h2>The climate layer adds another dimension to regional difference.</h2></div>
+      <div class="story-grid">
+        <div class="story-copy narrative-card"><h3>Climate shapes the conditions people live with</h3><p>Australia spans tropical, arid, temperate and cooler southern environments. These differences influence settlement patterns, daily life, agriculture, infrastructure demand and the way regions experience risk.</p><p>The climate charts add environmental context to the population and opportunity story. Temperature, rainfall, sunshine and wind help explain why Australian regions can feel very different even when they belong to the same national economy.</p></div>
+        <div class="climate-stack">
+          <div class="chart-card wide"><h4>Weather heatmap</h4><p class="caption">The heatmap compresses many climate measures into one view, making hot, wet, dry and sunny city profiles easier to compare.</p><div id="chart-heatmap" class="vis"></div></div>
+          <div class="chart-card wide"><h4>Rainfall vs temperature</h4><p class="caption">Rainfall and heat together reveal different climate profiles, from hot-dry inland locations to wetter coastal cities.</p><div id="chart-climate" class="vis"></div></div>
+          <div class="chart-card wide"><h4>Daily temperature range</h4><p class="caption">The gap between minimum and maximum temperature shows how daily temperature range differs across Australian cities.</p><div id="chart-temperature" class="vis"></div></div>
+          <div class="chart-card wide"><h4>Wind profile by city</h4><p class="caption">Select a city to see which wind directions dominate. Darker bars show directions recorded more often, revealing local weather patterns beyond temperature and rainfall.</p><div id="chart-wind" class="vis"></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="sources">
+    <div class="sources-inner">
+      <h2>Data sources</h2>
+      <p><strong>Australian Bureau of Statistics — Data by Region, 2011–25.</strong><br>
+        <a href="https://www.abs.gov.au/methodologies/data-region-methodology/2011-25#data-downloads" target="_blank" rel="noopener">https://www.abs.gov.au/methodologies/data-region-methodology/2011-25#data-downloads</a>
+      </p>
+      <p><strong>Australian Weather Data — based on Bureau of Meteorology observations.</strong><br>
+        <a href="https://www.kaggle.com/datasets/arunavakrchakraborty/australia-weather-data?resource=download" target="_blank" rel="noopener">https://www.kaggle.com/datasets/arunavakrchakraborty/australia-weather-data?resource=download</a>
+      </p>
+      <p class="submission-details final-credit">Sina Najafi · May 2026</p>
+    </div>
+  </footer>
+  <script src="js/vega_lite_vis.js"></script>
+</body>
+</html>
